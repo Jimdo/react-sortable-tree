@@ -4,6 +4,7 @@ import {
     DropTarget as dropTarget,
 } from 'react-dnd';
 import TouchBackend  from 'react-dnd-touch-backend';
+import HTML5Backend from 'react-dnd-html5-backend';
 import {
     getDepth,
 } from './tree-data-utils';
@@ -166,5 +167,12 @@ export function dndWrapTarget(el, type) {
 }
 
 export function dndWrapRoot(el) {
-    return dragDropContext(TouchBackend({ enableMouseEvents: true }))(el);
+    let backend;
+    const isTouchDevice = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+    if (isTouchDevice) {
+        backend = TouchBackend({ enableMouseEvents: true });
+    } else {
+        backend = HTML5Backend;
+    }
+    return dragDropContext(backend)(el);
 }
