@@ -234,6 +234,10 @@ class ReactSortableTree extends Component {
         this.setState({
             draggingTreeData,
         });
+
+        if (this.props.onDragStateChanged) {
+            this.props.onDragStateChanged({ isDragging: true, draggedNode: {}});
+        }
     }
 
     dragHover({ node: draggedNode, depth, minimumTreeIndex }) {
@@ -279,6 +283,10 @@ class ReactSortableTree extends Component {
                 swapDepth: null,
                 rows: this.getRows(this.props.treeData),
             });
+        }
+
+        if (this.props.onDragStateChanged) {
+            this.props.onDragStateChanged({ isDragging: false, draggedNode: {}});
         }
 
         this.moveNode(dropResult);
@@ -550,6 +558,9 @@ ReactSortableTree.propTypes = {
 
     // Called after node move operation.
     onMoveNode: PropTypes.func,
+
+    // Called when drag state changes.
+    onDragStateChanged: PropTypes.func,
 
     // Determine whether a node can be dragged. Set to false to disable dragging on all nodes.
     canDrag: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
