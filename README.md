@@ -1,5 +1,9 @@
 # React Sortable Tree
 
+Forked from fork from [frontend-collective/react-sortable-tree](https://github.com/frontend-collective/react-sortable-tree) for increased mobile support and adding custom event handlers. Mobile support did not work as intended, custom events landed in upstream. Removed from cms-frontend in [PR #4994](https://github.com/Jimdo/cms-frontend/pull/4994) for upstream version.
+
+---
+
 [![NPM](https://nodei.co/npm/react-sortable-tree.png)](https://npmjs.org/package/react-sortable-tree)
 
 [![tree200](https://cloud.githubusercontent.com/assets/4413963/18860410/26f64de8-84b8-11e6-9284-350308eed30a.png)](https://fritz-c.github.io/react-sortable-tree/)
